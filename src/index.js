@@ -1,9 +1,9 @@
-import "@webbitjs/frc/build/webbit-frc";
-import { addSourceProvider } from "@webbitjs/store";
+import "@webbitjs/frc";
+import { addSourceProvider, getSourceProvider } from "@webbitjs/store";
 import { html, css, LitElement } from 'lit-element';
+import './boolean-box2';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
-
 
 class UI extends LitElement {
 
@@ -22,6 +22,10 @@ class UI extends LitElement {
   render() {
     return html`
       <p>2020 UI!</p>
+      <boolean-box2
+        source-key="/boxColor/color"
+        source-provider="NetworkTables"
+      ></boolean-box2>
       <frc-boolean-box 
         source-key="/box"
         source-provider="NetworkTables"
