@@ -2,6 +2,7 @@ import "@webbitjs/frc";
 import { addSourceProvider, getSourceProvider } from "@webbitjs/store";
 import { html, css, LitElement } from 'lit-element';
 import './boolean-box2';
+import './control-panel';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
 
@@ -11,6 +12,16 @@ class UI extends LitElement {
     return css`
       p {
         color: green;
+        background: blueviolet;
+      }
+
+      frc-boolean-box {
+        color: blue;
+        white-space: nowrap;
+      }
+
+      frc-boolean-box::part(box) {
+        border-radius: 50%;
       }
     `;
   }
@@ -22,6 +33,9 @@ class UI extends LitElement {
   render() {
     return html`
       <p>2020 UI!</p>
+      <control-panel>
+
+      </control-panel>
       <boolean-box2
         source-key="/boxColor/color"
         source-provider="NetworkTables"
@@ -31,7 +45,10 @@ class UI extends LitElement {
         source-provider="NetworkTables"
         default-color="gray"
         true-color="purple"
-      ></frc-boolean-box>
+        false-color="silver"
+      >
+        sudhhciudsiusfsfsfsdsdfiuhdfuihui
+      </frc-boolean-box>
 
       <frc-number-slider
         source-provider="NetworkTables"
