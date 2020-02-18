@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/frc2423/2020-UI#readme",
   "dependencies": {
-    "@webbitjs/frc": "^1.0.3",
+    "@webbitjs/frc": "^1.0.4",
     "@webbitjs/store": "^1.0.1",
-    "@webbitjs/webbit": "^1.0.1",
+    "@webbitjs/webbit": "^1.0.2",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
