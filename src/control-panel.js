@@ -9,11 +9,53 @@ class ControlPanel extends Webbit {
       :host {
         height: 300px;
         display: inline-block;
+        border-radius: 50%;
+        border: 1px solid black;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
       }
 
       svg {
         height: 100%;
         transition: all 2s;
+      }
+
+
+
+      .red, .yellow, .green, .blue, .unknown {
+        stroke: black;
+        stroke-width: 0;
+        fill: white;
+      }
+
+      .unknown {
+        stroke-width: .015;
+      }
+
+      .red {
+        fill: red;
+      }
+
+      .yellow {
+        fill: yellow;
+      }
+
+      .green {
+        fill: green;
+      }
+
+      .blue {
+        fill: blue;
+      }
+
+      .question-mark {
+        font: italic .2px sans-serif;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-anchor: middle;
+        opacity: 1;
+      }
+
+      .no-question-mark {
+        opacity: 0;
       }
     `;
   }
@@ -64,10 +106,6 @@ class ControlPanel extends Webbit {
   }
 
   updated(changedProperties) {
-    console.log('changedProperties:', changedProperties);
-
-    console.log('this.currentColor:', this.currentColor);
-
 
     if (changedProperties.has('currentColor')) {
       if(changedProperties.get('currentColor') === 'unknown') {
@@ -87,17 +125,49 @@ class ControlPanel extends Webbit {
   }
 
   render() {
+
+    // 5 > 3 ? 'bigger' : 'smaller';
+
+    // this.currentColor === 'unknown' ? 'white' : color
+
+    // if (this.currentColor === 'unknown') {
+    //   fillColor = 'white'
+    // } else {
+    //   fillColor = color
+    // }
+
+    
+    // stroke: black;
+    // stroke-width: .01;
+    // fill: none;
+
+
     return svg`
       <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
         ${this.colors.map((color, index) => svg`
           <path
-            @click="${() => console.log(color)}"
-            fill="${color}" 
+            class="${this.currentColor === 'unknown' ? 'unknown' : color}"
+            @click="${() => this.toColor(color)}"
             d="${this.getPath(index)}"
-          ></path> 
-        `)}
+          >
+          </path> 
+        `)}   
+
+        ${this.colors.map((color, index) => svg`
+          <text 
+            class="${this.currentColor !== 'unknown' ? 'no-question-mark' : '' } question-mark" 
+            y="-.55" x="-.01" 
+            style="transform: rotate(${22.5 + index * 45}deg)"
+          >
+            ?
+          </text>
+        `)}    
       </svg>
     `;
+  }
+  toColor(color) {
+    this.desiredColor = color;
+    this.mode = 'toColor';
   }
 }
 
