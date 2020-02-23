@@ -1,5 +1,6 @@
 
 import { Webbit, html, css, svg } from '@webbitjs/webbit';
+import '@vaadin/vaadin-button';
 
 class ControlPanel extends Webbit {
   
@@ -7,16 +8,41 @@ class ControlPanel extends Webbit {
     return css`
 
       :host {
-        height: 300px;
+        display: flex;
+        width: 300px;
+        align-items: center;
+        flex-direction: column;
+        
+      }
+
+      label {
+        font-family: sans-serif;
+        font-size: 25px;
+        margin-right: 10px;
+      }
+
+      .switch {
+        display: flex;
+        align-items: center;
+      }
+
+      frc-toggle-switch {
+        width: 80px;
+        height: 45px;
+      }
+
+      .control-panel {
+        width: 100%;
         display: inline-block;
         border-radius: 50%;
         border: 1px solid black;
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         position: relative;
+        margin: 20px 0 25px;
       }
 
       svg {
-        height: 100%;
+        width: 100%;
         transition: all 2s;
       }
 
@@ -49,8 +75,8 @@ class ControlPanel extends Webbit {
       }
 
       .question-mark {
-        font: italic .2px sans-serif;
-        font-family: "Comic Sans MS", cursive, sans-serif;
+        font: .2px sans-serif;
+        /* font-family: "Comic Sans MS", cursive, sans-serif; */
         text-anchor: middle;
         opacity: 1;
       }
@@ -63,9 +89,23 @@ class ControlPanel extends Webbit {
         display: block;
         position: absolute;
         top: 50%;
-        right: 0;
         line-height: 0;
         z-index: 10;
+        font-size: 35px;
+        right: -55px;
+      }
+
+      .rotate-buttons vaadin-button{
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        padding: 0;
+        min-width: 0px;
+        font-size: 25px;
+      }
+
+      .rotate-buttons label {
+        margin-right: 5px;
       }
     `;
   }
@@ -134,25 +174,39 @@ class ControlPanel extends Webbit {
   
   }
 
+  toColor(color) {
+    if (this.mode !== 'disable') {
+      this.desiredColor = color;
+      this.mode = 'toColor';
+    }
+  }
+
+  rotate(desiredRotations) {
+    if (this.mode !== 'disable') {
+      this.desiredRotations += desiredRotations
+      this.mode = 'rotate'
+    }
+  }
+
+  toggleDisable(value) {
+    if (value.detail.checked) {
+      this.mode = 'stop';
+    } else {
+      this.mode = 'disable';
+    }
+  }
+
   render() {
 
-    // 5 > 3 ? 'bigger' : 'smaller';
-
-    // this.currentColor === 'unknown' ? 'white' : color
-
-    // if (this.currentColor === 'unknown') {
-    //   fillColor = 'white'
-    // } else {
-    //   fillColor = color
-    // }
-
-    
-    // stroke: black;
-    // stroke-width: .01;
-    // fill: none;
-
-
     return html`
+      <div class="switch">
+        <label>${this.mode === 'disable' ? 'Disabled' : 'Enabled'}</label>
+        <frc-toggle-switch 
+          @check="${this.toggleDisable}"
+          ?checked="${this.mode !== 'disable'}"
+        ></frc-toggle-switch>
+      </div>
+      <div class="control-panel">
       ${svg`
         <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
           ${this.colors.map((color, index) => svg`
@@ -179,11 +233,23 @@ class ControlPanel extends Webbit {
         class="indicator"
         style="color: ${this.currentColor}"
       >◀</span>
+      </div>
+    <div class="rotate-buttons">
+      <label>Rotate</label>
+      <vaadin-button
+        @click="${() => this.rotate(1)}"
+        theme="primary contrast"
+      >1</vaadin-button>
+      <vaadin-button
+        @click="${() => this.rotate(2)}"
+        theme="primary contrast"
+      >2</vaadin-button>
+      <vaadin-button
+        @click="${() => this.rotate(3)}"
+        theme="primary contrast"
+      >3</vaadin-button>
+  </div>
     `;
-  }
-  toColor(color) {
-    this.desiredColor = color;
-    this.mode = 'toColor';
   }
 }
 

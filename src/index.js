@@ -10,6 +10,11 @@ class UI extends LitElement {
 
   static get styles() {
     return css`
+
+      control-panel {
+        width: 500px;
+      }
+
       p {
         color: green;
         background: blueviolet;
@@ -32,11 +37,10 @@ class UI extends LitElement {
 
   render() {
     return html`
-      <p>2020 UI!</p>
       <control-panel>
 
       </control-panel>
-      <boolean-box2
+      <!-- <boolean-box2
         source-key="/boxColor/color"
         source-provider="NetworkTables"
       ></boolean-box2>
@@ -68,7 +72,7 @@ class UI extends LitElement {
       <frc-toggle-button
         source-provider="NetworkTables"
         source-key="/toggle/toggled"
-      ></frc-toggle-button>
+      ></frc-toggle-button> -->
     `;
   }
 }
