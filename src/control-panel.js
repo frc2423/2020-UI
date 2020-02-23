@@ -52,6 +52,7 @@ class ControlPanel extends Webbit {
         stroke: black;
         stroke-width: 0;
         fill: white;
+        transition: all .2s;
       }
 
       .unknown {
@@ -76,7 +77,6 @@ class ControlPanel extends Webbit {
 
       .question-mark {
         font: .2px sans-serif;
-        /* font-family: "Comic Sans MS", cursive, sans-serif; */
         text-anchor: middle;
         opacity: 1;
       }
