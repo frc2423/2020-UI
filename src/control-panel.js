@@ -12,6 +12,7 @@ class ControlPanel extends Webbit {
         border-radius: 50%;
         border: 1px solid black;
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        position: relative;
       }
 
       svg {
@@ -56,6 +57,15 @@ class ControlPanel extends Webbit {
 
       .no-question-mark {
         opacity: 0;
+      }
+
+      .indicator {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        line-height: 0;
+        z-index: 10;
       }
     `;
   }
@@ -142,27 +152,33 @@ class ControlPanel extends Webbit {
     // fill: none;
 
 
-    return svg`
-      <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
-        ${this.colors.map((color, index) => svg`
-          <path
-            class="${this.currentColor === 'unknown' ? 'unknown' : color}"
-            @click="${() => this.toColor(color)}"
-            d="${this.getPath(index)}"
-          >
-          </path> 
-        `)}   
+    return html`
+      ${svg`
+        <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
+          ${this.colors.map((color, index) => svg`
+            <path
+              class="${this.currentColor === 'unknown' ? 'unknown' : color}"
+              @click="${() => this.toColor(color)}"
+              d="${this.getPath(index)}"
+            >
+            </path> 
+          `)}   
 
-        ${this.colors.map((color, index) => svg`
-          <text 
-            class="${this.currentColor !== 'unknown' ? 'no-question-mark' : '' } question-mark" 
-            y="-.55" x="-.01" 
-            style="transform: rotate(${22.5 + index * 45}deg)"
-          >
-            ?
-          </text>
-        `)}    
-      </svg>
+          ${this.colors.map((color, index) => svg`
+            <text 
+              class="${this.currentColor !== 'unknown' ? 'no-question-mark' : '' } question-mark" 
+              y="-.55" x="-.01" 
+              style="transform: rotate(${22.5 + index * 45}deg)"
+            >
+              ?
+            </text>
+          `)}    
+        </svg>
+      `}
+      <span 
+        class="indicator"
+        style="color: ${this.currentColor}"
+      >◀</span>
     `;
   }
   toColor(color) {
