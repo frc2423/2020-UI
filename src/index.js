@@ -4,6 +4,7 @@ import { html, css, LitElement } from 'lit-element';
 import './boolean-box2';
 import './control-panel';
 import './ball-counter';
+import './gear-shift';
 import '@vaadin/vaadin';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
@@ -35,6 +36,7 @@ class UI extends LitElement {
 
   constructor() {
     super();
+
   }
 
   render() {
@@ -46,6 +48,12 @@ class UI extends LitElement {
         source-key="/ballCount"
         source-provider="NetworkTables"
       ></ball-counter>
+
+      <gear-shift
+        source-key="/gear"
+        source-provider="NetworkTables"
+      >
+      </gear-shift>
       <!-- <boolean-box2
         source-key="/boxColor/color"
         source-provider="NetworkTables"
