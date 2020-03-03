@@ -42,9 +42,10 @@ class UI extends LitElement {
       <control-panel>
 
       </control-panel>
-      <ball-counter>
-
-      </ball-counter>
+      <ball-counter
+        source-key="/ballCount"
+        source-provider="NetworkTables"
+      ></ball-counter>
       <!-- <boolean-box2
         source-key="/boxColor/color"
         source-provider="NetworkTables"
