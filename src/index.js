@@ -3,6 +3,8 @@ import { addSourceProvider, getSourceProvider } from "@webbitjs/store";
 import { html, css, LitElement } from 'lit-element';
 import './boolean-box2';
 import './control-panel';
+import './ball-counter';
+import '@vaadin/vaadin';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
 
@@ -40,6 +42,9 @@ class UI extends LitElement {
       <control-panel>
 
       </control-panel>
+      <ball-counter>
+
+      </ball-counter>
       <!-- <boolean-box2
         source-key="/boxColor/color"
         source-provider="NetworkTables"

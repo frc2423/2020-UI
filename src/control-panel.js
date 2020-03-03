@@ -1,6 +1,5 @@
 
 import { Webbit, html, css, svg } from '@webbitjs/webbit';
-import '@vaadin/vaadin-button';
 
 class ControlPanel extends Webbit {
   
