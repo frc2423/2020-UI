@@ -55,7 +55,7 @@ class ControlPanel extends Webbit {
       }
 
       .unknown {
-        stroke-width: .015;
+        /* stroke-width: .015; */
       }
 
       .red {
@@ -187,30 +187,15 @@ class ControlPanel extends Webbit {
     }
   }
 
-  toggleDisable(value) {
-    if (value.detail.checked) {
-      this.mode = 'stop';
-    } else {
-      this.mode = 'disable';
-    }
-  }
-
   render() {
 
     return html`
-      <div class="switch">
-        <label>${this.mode === 'disable' ? 'Disabled' : 'Enabled'}</label>
-        <frc-toggle-switch 
-          @check="${this.toggleDisable}"
-          ?checked="${this.mode !== 'disable'}"
-        ></frc-toggle-switch>
-      </div>
       <div class="control-panel">
       ${svg`
         <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
           ${this.colors.map((color, index) => svg`
             <path
-              class="${this.currentColor === 'unknown' ? 'unknown' : color}"
+              class="${color}"
               @click="${() => this.toColor(color)}"
               d="${this.getPath(index)}"
             >

@@ -13,10 +13,66 @@ class UI extends LitElement {
 
   static get styles() {
     return css`
-
+      :host{
+      display: flex;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      }
       control-panel {
         width: 500px;
       }
+      .controllbuttons {
+        display: flex;
+        width: 400px;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        font-size: 35px;
+        font-family: sans-serif;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+      
+
+      .subsystems {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+
+      .drive {
+        width: 28%;
+        height: 60%;
+      }
+      .shooter {
+        width: 28%;
+        height: 60%;
+      }
+      .wheel-spin {
+        /* width: 44%; */
+        flex: 1;
+        height: 60%;
+      }
+
+      .intake-storage {
+        width: 56%;
+        height: 40%;
+      }
+      
+      .climber {
+        /* width: 44%; */
+        flex: 1;
+        height: 40%;
+      }
+
+      .subsystem {
+      }
+
+
 
       p {
         color: green;
@@ -41,52 +97,51 @@ class UI extends LitElement {
 
   render() {
     return html`
-      <control-panel>
 
-      </control-panel>
-      <ball-counter
-        source-key="/ballCount"
-        source-provider="NetworkTables"
-      ></ball-counter>
+      <div class= "controllbuttons">
+      </div>
+      <div class="subsystems">
 
-      <gear-shift
-        source-key="/gear"
-        source-provider="NetworkTables"
-      >
-      </gear-shift>
-      <!-- <boolean-box2
-        source-key="/boxColor/color"
-        source-provider="NetworkTables"
-      ></boolean-box2>
-      <frc-boolean-box 
-        source-key="/box"
-        source-provider="NetworkTables"
-        default-color="gray"
-        true-color="purple"
-        false-color="silver"
-      >
-        sudhhciudsiusfsfsfsdsdfiuhdfuihui
-      </frc-boolean-box>
 
-      <frc-number-slider
-        source-provider="NetworkTables"
-        source-key="/slider"
-      ></frc-number-slider>
+        <div class="drive subsystem">
+          <label>Drive</label>
+          <gear-shift
+            source-key="/gear"
+            source-provider="NetworkTables"
+          >
+          </gear-shift>
+        </div>
+     
+        <div class="shooter subsystem">
+          <label>Shooter</label>
+        </div>
 
-      <frc-relay
-        source-provider="NetworkTables"
-        source-key="/relay"
-      ></frc-relay>
+        <div class="wheel-spin subsystem">
+          <label>wheel spin</label>
 
-      <frc-text-view
-        source-provider="NetworkTables"
-        source-key="/textView/string"
-      ></frc-text-view>
+          <control-panel
+            source-key="/controlPanel"
+            source-provider="NetworkTables"
+          >
+          </control-panel>
+        </div>
 
-      <frc-toggle-button
-        source-provider="NetworkTables"
-        source-key="/toggle/toggled"
-      ></frc-toggle-button> -->
+        <div class="intake-storage subsystem">
+        <label>intake</label>
+
+          <ball-counter
+            source-key="/ballCount"
+            source-provider="NetworkTables"
+          ></ball-counter>
+        </div>
+
+        <div class="climber subsystem">
+        <label>climb</label>
+      </div>
+
+    
+
+      </div>
     `;
   }
 }
