@@ -1,7 +1,8 @@
 import { Webbit, html, css } from '@webbitjs/webbit';
 import '@vaadin/vaadin-button';
+import { startCase } from 'lodash';
 
-class AutoAim extends Webbit {
+class ClimbState extends Webbit {
 
   static get styles() {
     return css`
@@ -11,7 +12,7 @@ class AutoAim extends Webbit {
         display: flex;
         flex-direction: row;
         height: 100px;
-        width: 300px;
+        width: 400px;
       }
       vaadin-button {
         border-radius: 0;
@@ -27,13 +28,14 @@ class AutoAim extends Webbit {
 
   static get properties() {
     return {
-      value: { type: Boolean, primary: true }
+      value: { type: String, primary: true }
     };
   }
 
   constructor() {
     super();
-    this.value = true;
+    this.buttons = ['pistonUp', 'climb', 'stop'];
+    this.value = 'stop';
   }
 
   setValue(value) {
@@ -42,15 +44,16 @@ class AutoAim extends Webbit {
 
   render() {
     return html`   
-      <vaadin-button 
-        theme="contrast ${this.value == true ? 'primary' : ''}"
-        @click="${() => this.setValue(true)}">Auto</vaadin-button>
-        
+      ${this.buttons.map(button => html`
         <vaadin-button 
-        theme="contrast ${this.value == false ? 'primary' : ''}"
-        @click="${() => this.setValue(false)}">Manual</vaadin-button>
+          theme="contrast ${this.value == button ? 'primary' : ''}" 
+          @click="${() => this.setValue(button)}"
+        >
+          ${startCase(button)}
+        </vaadin-button>
+      `)}
     `;
   }
 }
 
-webbitRegistry.define('auto-aim', AutoAim);
+webbitRegistry.define('climb-state', ClimbState);

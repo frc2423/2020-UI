@@ -8,6 +8,8 @@ import './gear-shift';
 import './controller-chooser';
 import './auto-aim';
 import './intake-state';
+import './climb-state';
+import './shooter-tracker';
 import '@vaadin/vaadin';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
@@ -48,27 +50,27 @@ class UI extends LitElement {
       }
 
       .drive {
-        width: 28%;
+        width: 20%;
         height: 60%;
       }
       .shooter {
-        width: 28%;
+        width: 50%;
         height: 60%;
       }
       .wheel-spin {
         /* width: 44%; */
-        flex: 1;
+        width: 50%;
         height: 60%;
       }
 
       .intake-storage {
-        width: 50%;
+        width: 30%;
         height: 40%;
       }
       
       .climber {
         /* width: 44%; */
-        flex: 1;
+        width: 50%;
         height: 40%;
       }
 
@@ -123,55 +125,66 @@ class UI extends LitElement {
       <div class="subsystems">
 
 
-        <div class="drive subsystem">
-          <label>Drive</label>
-          <gear-shift
-            source-key="/gear"
-            source-provider="NetworkTables"
-          >
-          </gear-shift>
-        </div>
-     
-        <div class="shooter subsystem">
-          <label>Shooter</label>
 
-          <h3>Aiming</h3>
-          <auto-aim 
-            source-key="/autoAim"
-            source-provider="NetworkTables"
-          >
-          </auto-aim>
-        </div>
+          <div class="shooter subsystem">
+            <label>Shooter</label>
 
-        <div class="wheel-spin subsystem">
-          <label>Control Panel</label>
+            <h3>Aiming</h3>
+            <auto-aim 
+              source-key="/autoAim"
+              source-provider="NetworkTables"
+            >
+            </auto-aim>
 
-          <control-panel
-            source-key="/controlPanel"
-            source-provider="NetworkTables"
-          >
-          </control-panel>
-        </div>
+            <h3>Shooter Pizza Tracker</h3>
+            <shooter-tracker
+              source-key="/shooterTracker"
+              source-provider="NetworkTables"
+            ></shooter-tracker>
+          </div>
 
-        <div class="intake-storage subsystem">
-        <label>intake</label>
+          <div class="wheel-spin subsystem">
+            <label>Control Panel</label>
 
-          <ball-counter
-            source-key="/ballCount"
-            source-provider="NetworkTables"
-          ></ball-counter>
-          <h3>Intake State</h3>
-          <intake-state
-            source-key="/intakeState"
-            source-provider="NetworkTables"
-          ></intake-state>
-        </div>
+            <control-panel
+              source-key="/controlPanel"
+              source-provider="NetworkTables"
+            >
+            </control-panel>
+          </div>
 
-        <div class="climber subsystem">
-        <label>climb</label>
-      </div>
 
-    
+          <div class="intake-storage subsystem">
+          <label>intake</label>
+
+            <ball-counter
+              source-key="/ballCount"
+              source-provider="NetworkTables"
+            ></ball-counter>
+            <h3>Intake State</h3>
+            <intake-state
+              source-key="/intakeState"
+              source-provider="NetworkTables"
+            ></intake-state>
+          </div>
+
+          <div class="drive subsystem">
+            <label>Drive</label>
+            <gear-shift
+              source-key="/gear"
+              source-provider="NetworkTables"
+            >
+            </gear-shift>
+          </div>
+
+
+          <div class="climber subsystem">
+          <label>climb</label>
+            <climb-state 
+              source-key="/climbState"
+              source-provider="NetworkTables"
+            ></climb-state>
+          </div>
 
       </div>
     `;

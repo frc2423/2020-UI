@@ -12,8 +12,8 @@ class ControllerChooser extends Webbit {
         div {
           height: 20%;
           border-bottom: 3px solid white;
-          background: gray;
           display: flex;
+          background: gray;
           justify-content: center;
           align-items: center;
           font-size: 35px;
@@ -25,25 +25,44 @@ class ControllerChooser extends Webbit {
         }
 
         .auto.selected {
-          background: lightgreen;
+          background: rgb(255, 51, 51);
         }
 
+        /* .auto {
+          background: rgb(255, 153, 153);
+        } */
+
         .teleop.selected {
-          background: red;
+          background: rgb(0,204,0);
         }
+
+        /* .teleop {
+          background: rgb(204, 255, 153);
+        } */
 
         .shoot.selected {
           background: yellow;
         }
 
+        /* .shoot {
+          background: rgb(253, 253, 150);
+        } */
+
         .controlpanel.selected {
-          background: lightblue;
+          background: rgb(0, 128, 255);
         }
 
-       .climbtime.selected {
-         background: orange;
-       }
+        /* .controlpanel {
+          background: rgb(153, 204, 255);
+        } */
 
+       .climbtime.selected {
+         background: rgb(178, 102, 255);
+       } 
+
+       /* .climbtime { 
+           background: rgb(204, 153, 255) 
+         } */
     `;
   }
 

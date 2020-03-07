@@ -9,6 +9,15 @@ class BallCounter extends Webbit {
             display: inline-block;
         }
 
+        img {
+            width: 40px;
+            margin-right: 3px;
+        }
+
+        .ball-images {
+            display: block;
+        }
+
         vaadin-number-field {
             width: 200px;
         }
@@ -60,10 +69,19 @@ class BallCounter extends Webbit {
   
   render() {
     return html`
+        <div class="ball-images">
+            ${[0,1,2,3,4].map(index => {
+                if (index <= this.ballCount-1) {
+                    return html`<img src="/images/power-cell-filled.png"/>`;
+                }
+                return html`<img src="/images/power-cell-empty.png"/>`;
+            })}
+        </div>
       <vaadin-number-field .value="${this.ballCount}" min="0" max="5" has-controls label="Ball Count"
       @change ="${this.onChange}"
       @input="${this.onfocus}"
       ?clear-button-visible=${this.ballCount !== 0}></vaadin-number-field>
+
     `;
   }
 }

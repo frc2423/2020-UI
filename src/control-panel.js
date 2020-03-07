@@ -15,7 +15,7 @@ class ControlPanel extends Webbit {
       }
 
       label {
-        font-family: sans-serif;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
         font-size: 25px;
         margin-right: 10px;
       }
