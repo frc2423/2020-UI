@@ -148,7 +148,7 @@ class UI extends LitElement {
           </div>
 
           <div class="wheel-spin subsystem">
-            <label>Control Panel</label>
+            <label>Control Panel Spinner</label>
 
             <control-panel
               source-key="/controlPanel"
@@ -174,7 +174,7 @@ class UI extends LitElement {
           </div>
 
           <div class="drive subsystem">
-            <label>Drive</label>
+            <label>Drivetrain</label>
             <gear-shift
               source-key="/gear"
               source-provider="NetworkTables"
@@ -184,7 +184,7 @@ class UI extends LitElement {
 
 
           <div class="climber subsystem">
-          <label>climb</label>
+          <label>climber</label>
             <climb-state 
               source-key="/climbState"
               source-provider="NetworkTables"
