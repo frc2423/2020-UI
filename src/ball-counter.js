@@ -16,6 +16,7 @@ class BallCounter extends Webbit {
 
         .ball-images {
             display: block;
+            margin-bottom: 10px;
         }
 
         vaadin-number-field {
@@ -77,7 +78,7 @@ class BallCounter extends Webbit {
                 return html`<img src="/images/power-cell-empty.png"/>`;
             })}
         </div>
-      <vaadin-number-field .value="${this.ballCount}" min="0" max="5" has-controls label="Ball Count"
+      <vaadin-number-field .value="${this.ballCount}" min="0" max="5" has-controls
       @change ="${this.onChange}"
       @input="${this.onfocus}"
       ?clear-button-visible=${this.ballCount !== 0}></vaadin-number-field>

@@ -25,7 +25,7 @@ class UI extends LitElement {
       position: relative;
       }
       control-panel {
-        width: 500px;
+        width: 550px;
       }
       .controllbuttons {
         display: flex;
@@ -50,7 +50,7 @@ class UI extends LitElement {
       }
 
       .drive {
-        width: 20%;
+        width: 28%;
         height: 60%;
       }
       .shooter {
@@ -64,18 +64,22 @@ class UI extends LitElement {
       }
 
       .intake-storage {
-        width: 30%;
+        width: 32%;
         height: 40%;
       }
       
       .climber {
         /* width: 44%; */
-        width: 50%;
+        width: 40%;
         height: 40%;
       }
 
       ball-counter {
         margin-bottom: 20px;
+      }
+
+      auto-aim {
+        margin-bottom: 30px;
       }
 
       .subsystem {
@@ -157,6 +161,7 @@ class UI extends LitElement {
           <div class="intake-storage subsystem">
           <label>intake</label>
 
+            <h3>Ball Count</h3>
             <ball-counter
               source-key="/ballCount"
               source-provider="NetworkTables"

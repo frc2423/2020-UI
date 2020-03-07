@@ -8,9 +8,9 @@ class ControlPanel extends Webbit {
 
       :host {
         display: flex;
-        width: 300px;
+        width: 400px;
         align-items: center;
-        flex-direction: column;
+        flex-direction: row;
         
       }
 
@@ -94,6 +94,13 @@ class ControlPanel extends Webbit {
         right: -55px;
       }
 
+      .rotate-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-right: 25px;
+        align-items: center;
+      }
+
       .rotate-buttons vaadin-button{
         width: 60px;
         height: 60px;
@@ -104,7 +111,8 @@ class ControlPanel extends Webbit {
       }
 
       .rotate-buttons label {
-        margin-right: 5px;
+        margin-bottom: 10px;
+
       }
     `;
   }
@@ -190,6 +198,21 @@ class ControlPanel extends Webbit {
   render() {
 
     return html`
+      <div class="rotate-buttons">
+        <label>Rotate</label>
+        <vaadin-button
+          @click="${() => this.rotate(1)}"
+          theme="primary contrast"
+        >1</vaadin-button>
+        <vaadin-button
+          @click="${() => this.rotate(2)}"
+          theme="primary contrast"
+        >2</vaadin-button>
+        <vaadin-button
+          @click="${() => this.rotate(3)}"
+          theme="primary contrast"
+        >3</vaadin-button>
+    </div>
       <div class="control-panel">
       ${svg`
         <svg viewBox="-1 -1 2 2" style="transform: rotate(${this.wheelPosition}deg)">
@@ -218,21 +241,6 @@ class ControlPanel extends Webbit {
         style="color: ${this.currentColor}"
       >◀</span>
       </div>
-    <div class="rotate-buttons">
-      <label>Rotate</label>
-      <vaadin-button
-        @click="${() => this.rotate(1)}"
-        theme="primary contrast"
-      >1</vaadin-button>
-      <vaadin-button
-        @click="${() => this.rotate(2)}"
-        theme="primary contrast"
-      >2</vaadin-button>
-      <vaadin-button
-        @click="${() => this.rotate(3)}"
-        theme="primary contrast"
-      >3</vaadin-button>
-  </div>
     `;
   }
 }

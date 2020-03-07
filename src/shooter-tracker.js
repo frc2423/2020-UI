@@ -16,7 +16,7 @@ class ShooterTracker extends Webbit {
         font-size: 15px;
         display: flex;
         flex-direction: row;
-        height: 100px;
+        height: 60px;
         width: 500px;
       }
 
