@@ -5,6 +5,9 @@ import './boolean-box2';
 import './control-panel';
 import './ball-counter';
 import './gear-shift';
+import './controller-chooser';
+import './auto-aim';
+import './intake-state';
 import '@vaadin/vaadin';
 
 addSourceProvider('NetworkTables', 'NetworkTables');
@@ -41,7 +44,7 @@ class UI extends LitElement {
         display: flex;
         flex: 1;
         flex-wrap: wrap;
-        padding: 10px;
+        padding: 10px 30px;
       }
 
       .drive {
@@ -59,7 +62,7 @@ class UI extends LitElement {
       }
 
       .intake-storage {
-        width: 56%;
+        width: 50%;
         height: 40%;
       }
       
@@ -67,6 +70,10 @@ class UI extends LitElement {
         /* width: 44%; */
         flex: 1;
         height: 40%;
+      }
+
+      ball-counter {
+        margin-bottom: 20px;
       }
 
       .subsystem {
@@ -87,6 +94,14 @@ class UI extends LitElement {
       frc-boolean-box::part(box) {
         border-radius: 50%;
       }
+
+      h3 {
+        color: rgba(27, 43, 65, 0.72);
+        font-size: 20px;
+        font-family:-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-weight: 500;
+        margin: 10px 0;
+      }
     `;
   }
 
@@ -97,8 +112,13 @@ class UI extends LitElement {
 
   render() {
     return html`
-
       <div class= "controllbuttons">
+        <controller-chooser
+          source-key="/currentController"
+          source-provider="NetworkTables"
+        >
+
+        </controller-chooser>
       </div>
       <div class="subsystems">
 
@@ -114,10 +134,17 @@ class UI extends LitElement {
      
         <div class="shooter subsystem">
           <label>Shooter</label>
+
+          <h3>Aiming</h3>
+          <auto-aim 
+            source-key="/autoAim"
+            source-provider="NetworkTables"
+          >
+          </auto-aim>
         </div>
 
         <div class="wheel-spin subsystem">
-          <label>wheel spin</label>
+          <label>Control Panel</label>
 
           <control-panel
             source-key="/controlPanel"
@@ -133,6 +160,11 @@ class UI extends LitElement {
             source-key="/ballCount"
             source-provider="NetworkTables"
           ></ball-counter>
+          <h3>Intake State</h3>
+          <intake-state
+            source-key="/intakeState"
+            source-provider="NetworkTables"
+          ></intake-state>
         </div>
 
         <div class="climber subsystem">
