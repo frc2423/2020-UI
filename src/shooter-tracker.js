@@ -28,7 +28,7 @@ class ShooterTracker extends Webbit {
         height: 100%;
         color: white;
         font-size: 15px;
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        font-family: Sans-Serif;
       }
 
       .labels div {

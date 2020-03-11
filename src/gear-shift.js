@@ -12,10 +12,14 @@ class GearShift extends Webbit {
         vaadin-radio-group::part(label) {
             font-size: 20px;
             padding-bottom: 5px;
+            font-family: Sans-Serif;
+
         }
 
         vaadin-radio-button::part(label) {
             font-size: 20px;
+            font-family: Sans-Serif;
+
         }
 
       `;

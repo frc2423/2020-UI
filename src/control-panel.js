@@ -15,7 +15,7 @@ class ControlPanel extends Webbit {
       }
 
       label {
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        font-family: Sans-Serif;
         font-size: 25px;
         margin-right: 10px;
       }
@@ -99,6 +99,8 @@ class ControlPanel extends Webbit {
         flex-direction: column;
         margin-right: 25px;
         align-items: center;
+        font-family: Sans-Serif;
+
       }
 
       .rotate-buttons vaadin-button{
@@ -108,6 +110,8 @@ class ControlPanel extends Webbit {
         padding: 0;
         min-width: 0px;
         font-size: 25px;
+        font-family: Sans-Serif;
+
       }
 
       .rotate-buttons label {

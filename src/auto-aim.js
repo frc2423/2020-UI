@@ -20,7 +20,7 @@ class AutoAim extends Webbit {
         font-size: inherit;
         text-transform: capitalize;
         height: 100%;
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        font-family: Sans-Serif;
       }
     `;
   }

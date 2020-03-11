@@ -29,14 +29,14 @@ class UI extends LitElement {
       }
       .controllbuttons {
         display: flex;
-        width: 400px;
+        height: 100%;       
       }
 
       label {
         display: block;
         text-align: left;
         font-size: 35px;
-        font-family: sans-serif;
+        font-family: Sans-Serif;
         text-transform: capitalize;
         margin-bottom: 10px;
       }
@@ -104,8 +104,9 @@ class UI extends LitElement {
       h3 {
         color: rgba(27, 43, 65, 0.72);
         font-size: 20px;
-        font-family:-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        /* font-family:-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
         font-weight: 500;
+        font-family: Sans-Serif;
         margin: 10px 0;
       }
     `;
@@ -184,7 +185,7 @@ class UI extends LitElement {
 
 
           <div class="climber subsystem">
-          <label>climber</label>
+          <label>climb time</label>
             <climb-state 
               source-key="/climbState"
               source-provider="NetworkTables"

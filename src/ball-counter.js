@@ -25,10 +25,14 @@ class BallCounter extends Webbit {
 
         vaadin-number-field::part(label) {
             font-size: 20px;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+
         }
 
         vaadin-number-field::part(value) {
             font-size: 25px;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+
         }
 
         vaadin-number-field::part(decrease-button), vaadin-number-field::part(increase-button) {
@@ -37,6 +41,8 @@ class BallCounter extends Webbit {
             line-height: 35px;
             font-size: 35px;
             font-weight: bold;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+
         }
       `;
   }

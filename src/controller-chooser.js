@@ -8,61 +8,70 @@ class ControllerChooser extends Webbit {
         :host {
             display: inline-block;
             width: 100%;
+            height: 100%;
         }
         div {
           height: 20%;
-          border-bottom: 3px solid white;
           display: flex;
-          background: gray;
           justify-content: center;
           align-items: center;
           font-size: 35px;
           font-weight: bold;
-          font-family: "Comic Sans MS", "Comic Sans", cursive;
+          font-family: Sans-Serif;
+          border-right: 10px solid white;
 
           /* background-image: url("/images/controller.png"); */
           /* background-size: cover; */
         }
 
-        .auto.selected {
-          background: rgb(255, 51, 51);
+        .selected {
+          border-right: 10px solid darkblue;
         }
 
-        /* .auto {
-          background: rgb(255, 153, 153);
-        } */
+        .auto {
+          background-image: url("/images/auto-deselected.png");
+          background-size: cover;
+        }
+
+        .auto.selected {
+          background-image: url("/images/auto-selected.png");
+        }
 
         .teleop.selected {
-          background: rgb(0,204,0);
+          background-image: url("/images/teleop-selected.png");
         }
 
-        /* .teleop {
-          background: rgb(204, 255, 153);
-        } */
+        .teleop {
+          background-image: url("/images/teleop-deselected.png");
+          background-size: cover;
+        }
 
         .shoot.selected {
-          background: yellow;
+          background-image: url("/images/shoot-selected.png");
         }
 
-        /* .shoot {
-          background: rgb(253, 253, 150);
-        } */
+        .shoot {
+          background-image: url("/images/shoot-deselected.png");
+          background-size: cover;
+        }
 
         .controlpanel.selected {
-          background: rgb(0, 128, 255);
+          background-image: url("/images/ControlPanel-selected.png");
         }
 
-        /* .controlpanel {
-          background: rgb(153, 204, 255);
-        } */
+        .controlpanel {
+          background-image: url("/images/ControlPanel-deselected.png");
+          background-size: cover;
+        }
 
        .climbtime.selected {
-         background: rgb(178, 102, 255);
+          background-image: url("/images/climb-selected.png");
        } 
 
-       /* .climbtime { 
-           background: rgb(204, 153, 255) 
-         } */
+       .climbtime { 
+          background-image: url("/images/climb-deselected.png");
+          background-size: cover;
+        }
     `;
   }
 
@@ -84,8 +93,17 @@ class ControllerChooser extends Webbit {
     this.currentController = controller;
   }
 
+  firstUpdated() {
+    this.setWidth();
+    window.addEventListener('resize', this.setWidth);
+  }
 
-  
+  setWidth() {
+    const height = this.offsetHeight;
+    const width = `${height * 2 / 5 + 10}px`;
+    this.style.width = width;
+  }
+
   render() {
 
     return html`
@@ -93,38 +111,31 @@ class ControllerChooser extends Webbit {
         class="auto ${this.currentController === 'auto' ? 'selected' : ''}"
         @click="${() => this.selectController("auto")}"
       >
-        Auto
       </div>
       <div 
         class="teleop ${this.currentController === "teleop" ? "selected" : ""}" 
         @click="${() => this.selectController("teleop")}"
       >
-        Teleop
       </div>
       <div 
         class="shoot ${this.currentController === "shoot" ? "selected" : ""}" 
         @click="${() => this.selectController("shoot")}"
       > 
-        Shoot 
       </div>
       <div 
         class="controlpanel ${this.currentController === "controlPanel" ? "selected":""}" 
         @click="${() => this.selectController("controlPanel")}"
       >
-        Control Panel 
       </div>
       <div 
         class="climbtime ${this.currentController === "climb" ? "selected" : ""}"
         @click="${() => this.selectController("climb")}"
       > 
-        Climb Time 
+ 
       </div>
     `;
   }
 }
-
-let name = "Jules"
-let sentence = `Howdy my name is ${name}`
 
 
 webbitRegistry.define('controller-chooser', ControllerChooser);
